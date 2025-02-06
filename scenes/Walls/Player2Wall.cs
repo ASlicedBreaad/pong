@@ -1,21 +1,24 @@
 using Godot;
 using System;
 
-public partial class Players : Node2D
+public partial class Player2Wall : PlayerWalls
 {
+
+	public void OnPlayer2WallEntered(Node2D body){
+		if(body is Ball){
+			GD.Print("Ball!");
+			level.increaseScore(1);
+		}
+	}
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Node2D childNode = (Node2D) GetChild(0);
-		Node2D childNode2 = (Node2D) GetChild(1);
-		childNode.Position= new Vector2(0,0);
-		childNode2.Position = new Vector2(0,0);
+		base._Ready();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
-		Position = new Vector2(0,0);
 	}
 }

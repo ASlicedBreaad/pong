@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://btk7fo63iypho"]
+
+[ext_resource type="Theme" uid="uid://bsjehqu18skqn" path="res://scenes/ui/pong_theme.tres" id="1_yw87w"]
+[ext_resource type="Script" path="res://scenes/ui/BoxContainer.cs" id="2_mi8cq"]
+[ext_resource type="Script" path="res://scenes/ui/QuitButton.cs" id="3_ar2fa"]
+[ext_resource type="Script" path="res://scenes/ui/NewGameButton.cs" id="3_qb36d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfvrb"]
+bg_color = Color(0.239216, 0.729412, 0.0784314, 1)
+corner_radius_top_left = 95
+corner_radius_bottom_right = 95
+shadow_size = 20
+shadow_offset = Vector2(6.65, 6.155)
+
+[sub_resource type="Theme" id="Theme_83yu2"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.5
+offset_top = -139.0
+offset_right = 238.5
+offset_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yw87w")
+theme_override_styles/panel = SubResource("StyleBoxFlat_tfvrb")
+
+[node name="BoxContainer" type="BoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.5
+offset_top = -103.0
+offset_right = 198.5
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yw87w")
+alignment = 1
+vertical = true
+script = ExtResource("2_mi8cq")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/BoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yw87w")
+
+[node name="NewGameButton" type="Button" parent="Panel/BoxContainer/MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_83yu2")
+text = "New Game"
+script = ExtResource("3_qb36d")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/BoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yw87w")
+
+[node name="QuitButton" type="Button" parent="Panel/BoxContainer/MarginContainer2"]
+layout_mode = 2
+theme = SubResource("Theme_83yu2")
+text = "Quit"
+script = ExtResource("3_ar2fa")
+
+[connection signal="pressed" from="Panel/BoxContainer/MarginContainer/NewGameButton" to="Panel/BoxContainer/MarginContainer/NewGameButton" method="buttonIsPressed"]
+[connection signal="pressed" from="Panel/BoxContainer/MarginContainer2/QuitButton" to="Panel/BoxContainer/MarginContainer2/QuitButton" method="buttonIsPressed"]

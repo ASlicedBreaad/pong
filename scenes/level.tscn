@@ -1,19 +1,82 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmo3jcyrly07w"]
+[gd_scene load_steps=14 format=3 uid="uid://bmo3jcyrly07w"]
 
 [ext_resource type="Texture2D" uid="uid://dsb0i0chhoqcj" path="res://resources/bg.png" id="1_7tnkg"]
 [ext_resource type="Script" path="res://scenes/Level.cs" id="1_h7nv0"]
-[ext_resource type="PackedScene" uid="uid://4u33pcbkwv8w" path="res://scenes/player.tscn" id="2_dfacv"]
+[ext_resource type="PackedScene" uid="uid://csdhp1yk6sx7l" path="res://scenes/Players_Scene/player.tscn" id="2_dfacv"]
+[ext_resource type="Script" path="res://scenes/Borders.cs" id="3_0k7at"]
+[ext_resource type="Script" path="res://scenes/Walls/Player1Wall.cs" id="3_lwltb"]
 [ext_resource type="PackedScene" uid="uid://dfacqk1ykirxp" path="res://scenes/ball.tscn" id="3_r4ngl"]
+[ext_resource type="Script" path="res://scenes/Walls/Player2Wall.cs" id="4_f3py5"]
+[ext_resource type="PackedScene" uid="uid://btk7fo63iypho" path="res://scenes/ui/PauseMenu.tscn" id="8_yhcuk"]
+[ext_resource type="Script" path="res://scenes/ui/PauseMenu.cs" id="9_ejl56"]
 
-[node name="level" type="Node2D"]
-position = Vector2(700, 525)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ehih2"]
+rough = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8hnl"]
+size = Vector2(1320, 26.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp5a4"]
+size = Vector2(47, 1003)
+
+[sub_resource type="Theme" id="Theme_1xm7j"]
+
+[node name="level" type="Node"]
+process_mode = 3
 script = ExtResource("1_h7nv0")
 
 [node name="bg" type="Sprite2D" parent="."]
 texture = ExtResource("1_7tnkg")
+centered = false
+
+[node name="borders" type="Node2D" parent="."]
+script = ExtResource("3_0k7at")
+
+[node name="levelBody" type="StaticBody2D" parent="borders"]
+physics_material_override = SubResource("PhysicsMaterial_ehih2")
+
+[node name="topWall" type="CollisionShape2D" parent="borders/levelBody"]
+position = Vector2(699, 13.5)
+shape = SubResource("RectangleShape2D_t8hnl")
+
+[node name="bottomWall" type="CollisionShape2D" parent="borders/levelBody"]
+position = Vector2(698, 1042.25)
+shape = SubResource("RectangleShape2D_t8hnl")
+
+[node name="leftWall" type="Area2D" parent="borders"]
+script = ExtResource("3_lwltb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="borders/leftWall"]
+position = Vector2(13.5, 530.5)
+shape = SubResource("RectangleShape2D_bp5a4")
+
+[node name="rightWall" type="Area2D" parent="borders"]
+script = ExtResource("4_f3py5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="borders/rightWall"]
+position = Vector2(1382, 526)
+shape = SubResource("RectangleShape2D_bp5a4")
 
 [node name="ball" parent="." instance=ExtResource("3_r4ngl")]
-position = Vector2(4, 7)
+position = Vector2(576, 535)
+linear_damp_mode = 1
+angular_damp_mode = 1
 
 [node name="players" parent="." instance=ExtResource("2_dfacv")]
-position = Vector2(-209, 4)
+process_mode = 1
+position = Vector2(702, 225)
+
+[node name="MenuContainer" type="CenterContainer" parent="."]
+offset_top = 1.0
+offset_right = 1400.0
+offset_bottom = 1050.0
+
+[node name="PauseMenu" parent="MenuContainer" instance=ExtResource("8_yhcuk")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_1xm7j")
+script = ExtResource("9_ejl56")
+
+[connection signal="body_entered" from="borders/leftWall" to="borders/leftWall" method="OnPlayer1WallEntered"]
+[connection signal="body_entered" from="borders/rightWall" to="borders/rightWall" method="OnPlayer2WallEntered"]

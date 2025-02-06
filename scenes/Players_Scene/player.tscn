@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://csdhp1yk6sx7l"]
+
+[ext_resource type="Script" path="res://scenes/Players_Scene/Players.cs" id="1_djjch"]
+[ext_resource type="Script" path="res://scenes/Players_Scene/Player1.cs" id="2_fasxa"]
+[ext_resource type="Texture2D" uid="uid://bwo5am63602v5" path="res://resources/paddle.png" id="2_r8ujg"]
+[ext_resource type="Script" path="res://scenes/Players_Scene/Player2.cs" id="4_jp2mr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6njfp"]
+size = Vector2(54, 273)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bgad"]
+size = Vector2(54, 274)
+
+[node name="players" type="Node2D"]
+script = ExtResource("1_djjch")
+
+[node name="player1" type="CharacterBody2D" parent="."]
+disable_mode = 1
+safe_margin = 0.001
+script = ExtResource("2_fasxa")
+
+[node name="spritePlayer1" type="Sprite2D" parent="player1"]
+texture = ExtResource("2_r8ujg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player1"]
+position = Vector2(3, -1.5)
+shape = SubResource("RectangleShape2D_6njfp")
+
+[node name="player2" type="CharacterBody2D" parent="."]
+disable_mode = 1
+script = ExtResource("4_jp2mr")
+
+[node name="spritePlayer2" type="Sprite2D" parent="player2"]
+texture = ExtResource("2_r8ujg")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player2"]
+position = Vector2(-3, -2)
+shape = SubResource("RectangleShape2D_3bgad")

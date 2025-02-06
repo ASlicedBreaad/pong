@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bsjehqu18skqn"]
+
+[sub_resource type="SystemFont" id="SystemFont_y0u1h"]
+font_names = PackedStringArray("Monospace")
+
+[resource]
+default_font = SubResource("SystemFont_y0u1h")
+default_font_size = 41
+Button/fonts/font = SubResource("SystemFont_y0u1h")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_top = 10
