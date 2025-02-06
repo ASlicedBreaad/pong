@@ -27,6 +27,7 @@ public partial class Level : Node
 	private void resetScores(){
 		playerScores = playerScores.Select(s => 0).ToList();
 		getScores();
+		updateScores(new List<int>{0,0});
 		
 	}
 

@@ -26,7 +26,7 @@ public partial class Ball : RigidBody2D
         if(collisionInfo != null)
         {
             Vector2 bouncedVec = velocity.Bounce(collisionInfo.GetNormal());
-                velocity = new Vector2((float)(bouncedVec.X*1.1),bouncedVec.Y);
+                velocity = new Vector2((float)(bouncedVec.X*1.03),bouncedVec.Y);
         }
             
     }
