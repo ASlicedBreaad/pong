@@ -7,5 +7,6 @@ font_names = PackedStringArray("Monospace")
 default_font = SubResource("SystemFont_y0u1h")
 default_font_size = 41
 Button/fonts/font = SubResource("SystemFont_y0u1h")
+Label/font_sizes/font_size = 60
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_top = 10

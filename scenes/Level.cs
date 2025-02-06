@@ -58,10 +58,16 @@ public partial class Level : Node
 		}
 	}
 
+	public void updateScores(List<int> scores){
+		List<Label> labels = GetNode<Ui>("UI").getLabels();
+		labels[0].Text = scores[0].ToString();
+		labels[1].Text = scores[1].ToString();
+	}
 	public void increaseScore(int playerId) {
 		playerScores[playerId]++;
 		player1IsWinner = playerId == 0;
-		getScores();
+		updateScores(playerScores);
+
 		ball.resetPosition(player1IsWinner);
 	}
 }

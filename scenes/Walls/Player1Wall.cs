@@ -6,7 +6,7 @@ public partial class Player1Wall : PlayerWalls
 	public void OnPlayer1WallEntered(Node2D body){
 		if(body is Ball){
 			GD.Print("Ball!");
-			level.increaseScore(0);
+			level.increaseScore(1);
 		}
 	}
 

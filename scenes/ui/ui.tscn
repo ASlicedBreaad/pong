@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://jftmij6ab8lp"]
+
+[ext_resource type="Theme" uid="uid://bsjehqu18skqn" path="res://scenes/ui/pong_theme.tres" id="1_pug5d"]
+[ext_resource type="Script" path="res://scenes/ui/Ui.cs" id="2_pjjae"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pug5d")
+script = ExtResource("2_pjjae")
+
+[node name="MarginBox" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.5
+offset_top = -131.5
+offset_right = 244.5
+offset_bottom = 131.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 415
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginBox"]
+layout_mode = 2
+
+[node name="P1Score" type="MarginContainer" parent="MarginBox/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_pug5d")
+theme_override_constants/margin_right = 435
+
+[node name="scoreLabel" type="Label" parent="MarginBox/HBoxContainer/P1Score"]
+layout_mode = 2
+text = "0"
+
+[node name="P2Score" type="MarginContainer" parent="MarginBox/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_pug5d")
+
+[node name="scoreLabel" type="Label" parent="MarginBox/HBoxContainer/P2Score"]
+layout_mode = 2
+text = "0"

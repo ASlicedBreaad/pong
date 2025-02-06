@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmo3jcyrly07w"]
+[gd_scene load_steps=15 format=3 uid="uid://bmo3jcyrly07w"]
 
 [ext_resource type="Texture2D" uid="uid://dsb0i0chhoqcj" path="res://resources/bg.png" id="1_7tnkg"]
 [ext_resource type="Script" path="res://scenes/Level.cs" id="1_h7nv0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/Walls/Player2Wall.cs" id="4_f3py5"]
 [ext_resource type="PackedScene" uid="uid://btk7fo63iypho" path="res://scenes/ui/PauseMenu.tscn" id="8_yhcuk"]
 [ext_resource type="Script" path="res://scenes/ui/PauseMenu.cs" id="9_ejl56"]
+[ext_resource type="PackedScene" uid="uid://jftmij6ab8lp" path="res://scenes/ui/ui.tscn" id="10_oyebq"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ehih2"]
 rough = true
@@ -58,6 +59,7 @@ position = Vector2(1382, 526)
 shape = SubResource("RectangleShape2D_bp5a4")
 
 [node name="ball" parent="." instance=ExtResource("3_r4ngl")]
+process_mode = 1
 position = Vector2(576, 535)
 linear_damp_mode = 1
 angular_damp_mode = 1
@@ -77,6 +79,13 @@ layout_mode = 2
 size_flags_vertical = 4
 theme = SubResource("Theme_1xm7j")
 script = ExtResource("9_ejl56")
+
+[node name="UI" parent="." instance=ExtResource("10_oyebq")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
 
 [connection signal="body_entered" from="borders/leftWall" to="borders/leftWall" method="OnPlayer1WallEntered"]
 [connection signal="body_entered" from="borders/rightWall" to="borders/rightWall" method="OnPlayer2WallEntered"]
