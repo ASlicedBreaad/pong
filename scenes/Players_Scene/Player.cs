@@ -3,13 +3,13 @@ using Godot;
 public abstract partial class Player : CharacterBody2D{
 
     public Sprite2D bg;
-    double speed;
+    protected float speed;
     protected const int offsetBorder = 75;
 
     public override void _Ready() {
         base._Ready();
         bg =  GetNode<Sprite2D>("../../bg");
-        speed = 700;
+        speed = 1200;
     } 
 
     protected abstract Vector2 getDirection();

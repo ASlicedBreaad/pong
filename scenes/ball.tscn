@@ -18,7 +18,9 @@ lock_rotation = true
 script = ExtResource("1_3p856")
 
 [node name="ballSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_y3nqo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.4, 0.4)
 shape = SubResource("RectangleShape2D_u2alm")

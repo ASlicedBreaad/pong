@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://btk7fo63iypho"]
+[gd_scene load_steps=8 format=3 uid="uid://btk7fo63iypho"]
 
 [ext_resource type="Theme" uid="uid://bsjehqu18skqn" path="res://scenes/ui/pong_theme.tres" id="1_yw87w"]
 [ext_resource type="Script" path="res://scenes/ui/BoxContainer.cs" id="2_mi8cq"]
+[ext_resource type="Script" path="res://scenes/ui/NewGameButton.cs" id="3_7lgap"]
 [ext_resource type="Script" path="res://scenes/ui/QuitButton.cs" id="3_ar2fa"]
-[ext_resource type="Script" path="res://scenes/ui/NewGameButton.cs" id="3_qb36d"]
+[ext_resource type="Script" path="res://scenes/ui/AiButton.cs" id="4_mbrcd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfvrb"]
 bg_color = Color(0.239216, 0.729412, 0.0784314, 1)
@@ -68,7 +69,17 @@ theme = ExtResource("1_yw87w")
 layout_mode = 2
 theme = SubResource("Theme_83yu2")
 text = "New Game"
-script = ExtResource("3_qb36d")
+script = ExtResource("3_7lgap")
+
+[node name="MarginContainer3" type="MarginContainer" parent="Panel/BoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_yw87w")
+
+[node name="AiButton" type="Button" parent="Panel/BoxContainer/MarginContainer3"]
+layout_mode = 2
+theme = SubResource("Theme_83yu2")
+text = "Ai : On"
+script = ExtResource("4_mbrcd")
 
 [node name="MarginContainer2" type="MarginContainer" parent="Panel/BoxContainer"]
 layout_mode = 2
@@ -81,4 +92,5 @@ text = "Quit"
 script = ExtResource("3_ar2fa")
 
 [connection signal="pressed" from="Panel/BoxContainer/MarginContainer/NewGameButton" to="Panel/BoxContainer/MarginContainer/NewGameButton" method="buttonIsPressed"]
+[connection signal="pressed" from="Panel/BoxContainer/MarginContainer3/AiButton" to="Panel/BoxContainer/MarginContainer3/AiButton" method="buttonIsPressed"]
 [connection signal="pressed" from="Panel/BoxContainer/MarginContainer2/QuitButton" to="Panel/BoxContainer/MarginContainer2/QuitButton" method="buttonIsPressed"]

@@ -71,4 +71,10 @@ public partial class Level : Node
 
 		ball.resetPosition(player1IsWinner);
 	}
+
+	public bool switchAiState(){
+		Player2 player2 = (Player2) players[1];
+		player2.ai_on = !player2.ai_on;
+		return player2.ai_on;
+	}
 }

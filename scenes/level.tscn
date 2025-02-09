@@ -67,6 +67,7 @@ angular_damp_mode = 1
 [node name="players" parent="." instance=ExtResource("2_dfacv")]
 process_mode = 1
 position = Vector2(702, 225)
+scale = Vector2(1, 1)
 
 [node name="MenuContainer" type="CenterContainer" parent="."]
 offset_top = 1.0
