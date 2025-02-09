@@ -19,9 +19,11 @@ public partial class PauseMenu : Control
 		
 		if(GetTree().Paused){
 			GetTree().Paused = false;
+			GetNode<Level>("/root/level").pauseGame(false);
 			Hide();
 		}else{
 			GetTree().Paused = true;
+			GetNode<Level>("/root/level").pauseGame(true);
 			Show();
 		}
 	}

@@ -9,7 +9,7 @@ public abstract partial class Player : CharacterBody2D{
     public override void _Ready() {
         base._Ready();
         bg =  GetNode<Sprite2D>("../../bg");
-        speed = 1200;
+        speed = 1100;
     } 
 
     protected abstract Vector2 getDirection();

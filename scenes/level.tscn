@@ -18,7 +18,7 @@ rough = true
 size = Vector2(1320, 26.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp5a4"]
-size = Vector2(47, 1003)
+size = Vector2(73, 1004)
 
 [sub_resource type="Theme" id="Theme_1xm7j"]
 
@@ -48,14 +48,14 @@ shape = SubResource("RectangleShape2D_t8hnl")
 script = ExtResource("3_lwltb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="borders/leftWall"]
-position = Vector2(13.5, 530.5)
+position = Vector2(27, 530)
 shape = SubResource("RectangleShape2D_bp5a4")
 
 [node name="rightWall" type="Area2D" parent="borders"]
 script = ExtResource("4_f3py5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="borders/rightWall"]
-position = Vector2(1382, 526)
+position = Vector2(1371.5, 526)
 shape = SubResource("RectangleShape2D_bp5a4")
 
 [node name="ball" parent="." instance=ExtResource("3_r4ngl")]
