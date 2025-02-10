@@ -36,29 +36,23 @@ public partial class Level : Node
 		player2.startStopTimerAi(state);
 	}
 	public List<int> getScores(){
-		for (int i = 0; i < playerScores.Count; i++)
-		{
-			GD.Print("Player "+(i+1)+": "+playerScores[i]);
-		}
 		return playerScores;
 	}
 
 	public void startNewGame(){
-		resetScores();
-		ball.resetPosition(player1IsWinner);
-		players.ForEach(p=>p.resetPosition());
 		pauseMenu.PauseMenuClicked();
+		resetScores();
+		ball.resetBall(player1IsWinner);
+		players.ForEach(p=>p.resetPosition());
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		
 	}
 
 	public override void _Input(InputEvent @event) {
 		if(@event.IsActionPressed("Pause")){
-			GD.Print("MAIN PAUSE");
 			pauseMenu.PauseMenuClicked();
 		}
 	}
@@ -69,13 +63,13 @@ public partial class Level : Node
 		labels[1].Text = scores[1].ToString();
 	}
 	public void increaseScore(int playerId) {
+		ball.resetBall(player1IsWinner);
 		playerScores[playerId]++;
 		player1IsWinner = playerId == 0;
 		updateScores(playerScores);
 		if(playerId == 0){
 			((Player2) players[1]).makeSmarter();
 		}
-		ball.resetPosition(player1IsWinner);
 	}
 
 	public bool switchAiState(){

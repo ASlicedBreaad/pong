@@ -7,7 +7,7 @@ public partial class NewGameButton : Button
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		level = GetTree().Root.GetNode<Level>("level");
+		level = GetNode<Level>("/root/level");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
