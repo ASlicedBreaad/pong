@@ -16,7 +16,7 @@ public partial class Ball : RigidBody2D
         Position = new Vector2(bg.Texture.GetWidth()/2, bg.Texture.GetHeight()/2);
     }
 
-    public void resetPosition(bool player1IsWinner){
+    private void resetPosition(bool player1IsWinner){
         this.Hide();
         LinearVelocity = new Vector2(0,0);
         Position = new Vector2(bg.Texture.GetWidth()/2, bg.Texture.GetHeight()/2);    

@@ -33,7 +33,7 @@ public partial class Level : Node
 
 	public void pauseGame(bool state){
 		Player2 player2 = (Player2) players[1];
-		player2.startStopTimerAi(state);
+		player2.pauseUnpauseTimerAi();
 	}
 	public List<int> getScores(){
 		return playerScores;
@@ -75,6 +75,6 @@ public partial class Level : Node
 	public bool switchAiState(){
 		Player2 player2 = (Player2) players[1];
 		
-		return player2.switchOnOffTimerAi();
+		return player2.pauseUnpauseTimerAi();
 	}
 }

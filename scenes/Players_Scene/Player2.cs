@@ -38,7 +38,7 @@ public partial class Player2 : Player
         aiTimer.Timeout += changeDelta;
     }
 
-    public bool switchOnOffTimerAi()
+    public bool pauseUnpauseTimerAi()
     {
         switch (ai_on)
         {
